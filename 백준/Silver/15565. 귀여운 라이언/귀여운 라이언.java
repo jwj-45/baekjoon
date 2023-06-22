@@ -22,16 +22,11 @@ public class Main {
                 if (arr[rt] == 1) {
                     cnt++;
                     if (cnt == m) {
-                        if (arr[lt] == 1) {
-                            min = Math.min(min, rt - lt + 1);
-                            lt++;
-                        } else {
-                            while (arr[lt] != 1) {
-                                lt++;
-                            }
-                            min = Math.min(min, rt - lt + 1);
+                        while (arr[lt] != 1) {
                             lt++;
                         }
+                        min = Math.min(min, rt - lt + 1);
+                        lt++;
                         cnt--;
                     }
                 }
