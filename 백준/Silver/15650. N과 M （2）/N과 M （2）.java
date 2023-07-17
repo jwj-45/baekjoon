@@ -1,34 +1,43 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class Main {
 
-    static int n, m;
-    static int[] combi;
+    static int N, M;
+    static int[] arr;
 
-    public void DFS(int cnt, int start) {
-        if (cnt == m) {
-            for (int x : combi) {
-                System.out.print(x + " ");
+    public void DFS(int cnt, int start, BufferedWriter bw) throws IOException {
+
+        if (cnt == M) {
+            for (int x : arr) {
+                bw.write(x + " ");
             }
-            System.out.println();
+            bw.newLine();
         }
         else {
-            for (int i = start; i <= n; i++) {
-                combi[cnt] = i;
-                DFS(cnt + 1, i + 1);
+            for (int i = start; i <= N; i++) {
+                arr[cnt] = i;
+                DFS(cnt + 1, i + 1, bw);
             }
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
         Main main = new Main();
 
-        n = sc.nextInt();
-        m = sc.nextInt();
-        combi = new int[m];
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        arr = new int[M];
 
-        main.DFS(0, 1);
+        main.DFS(0, 1, bw);
+
+        bw.flush();
+        bw.close();
+        br.close();
     }
 }
