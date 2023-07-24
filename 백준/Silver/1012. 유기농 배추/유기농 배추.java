@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -20,23 +21,27 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        
         Main main = new Main();
 
-        int T = sc.nextInt();
-
+        int T = Integer.parseInt(br.readLine());
         for (int i = 1; i <= T; i++) {
 
-            M = sc.nextInt();
-            N = sc.nextInt();
-            K = sc.nextInt();
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            M = Integer.parseInt(st.nextToken());
+            N = Integer.parseInt(st.nextToken());
+            K = Integer.parseInt(st.nextToken());
             cabbage = new int[M][N];
 
             for (int j = 0; j < K; j++) {
-                int idxRow = sc.nextInt();
-                int idxCol = sc.nextInt();
+
+                st = new StringTokenizer(br.readLine());
+                int idxRow = Integer.parseInt(st.nextToken());
+                int idxCol = Integer.parseInt(st.nextToken());
                 cabbage[idxRow][idxCol] = 1;
             }
 
@@ -49,8 +54,11 @@ public class Main {
                     }
                 }
             }
-            System.out.println(cnt);
-
+            bw.write(cnt +"\n");
         }
+        
+        bw.flush();
+        bw.close();
+        br.close();
     }
 }
