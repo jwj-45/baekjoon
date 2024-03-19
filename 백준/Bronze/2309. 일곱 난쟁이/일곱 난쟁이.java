@@ -12,7 +12,7 @@ public class Main {
             if (sum == 100) {
                 int[] list = new int[7];
                 for (int i = 0; i < 7; i++) {
-                    list[i] = combi[i];
+                    list[i] = dwarf[combi[i]];
                 }
                 answer.add(list);
             }
@@ -40,7 +40,7 @@ public class Main {
         main.dfs(0, 0, 0, dwarf);
 
         for (int x : answer.get(0)) {
-            System.out.println(dwarf[x]);
+            System.out.println(x);
         }
     }
 }
