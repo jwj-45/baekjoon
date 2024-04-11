@@ -4,9 +4,6 @@ import java.util.*;
 public class Main {
 	
 	public boolean hanNum(int num) {
-		if(num < 100) {
-			return true;
-		}
 		ArrayList<Integer> remain = new ArrayList<>();
 		while(num > 0) {
 			int rem = num % 10;
@@ -35,11 +32,16 @@ public class Main {
 		Main main = new Main();
 		
 		int cnt = 0, num = 1;
-		while(num <= n) {
-			if(main.hanNum(num)) {
-				cnt++;
+		if(n < 100) {
+			cnt = n;
+		}
+		else {
+			while(num <= n) {
+				if(main.hanNum(num)) {
+					cnt++;
+				}
+				num++;
 			}
-			num++;
 		}
 		System.out.println(cnt);
 	}
