@@ -7,20 +7,20 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-
-        int a = 1;
+        
         int answer = 0;
-        while (a < n) {
-            String tmp = String.valueOf(a);
+        
+        for(int i = 1; i < n; i++) {
             int sum = 0;
-            for (int i = 0; i < tmp.length(); i++) {
-                sum += Integer.parseInt(String.valueOf(tmp.charAt(i)));
+            int num = i;
+            while (0 < num) {
+                sum += num % 10;
+                num /= 10;
             }
-            if (sum + a == n) {
-                answer = a;
+            if(sum + i == n) { 
+                answer = i;
                 break;
             }
-            a++;
         }
         System.out.println(answer);
     }
